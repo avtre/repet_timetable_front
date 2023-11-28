@@ -6,15 +6,22 @@ const UserForm = () => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [classNumber, setClassNumber] = useState('');
-    const {tg} = useTelegram();
+    const {tg, queryId} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
             name,
             surname,
-            classNumber
+            classNumber,
+            queryId
         }
-        tg.sendData(JSON.stringify(data));
+        fetch('http://192.168.0.2:8080', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
     }, [name, surname, classNumber])
 
     useEffect(() => {
