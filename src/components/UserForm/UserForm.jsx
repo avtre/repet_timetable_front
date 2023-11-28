@@ -15,7 +15,7 @@ const UserForm = () => {
             classNumber,
             queryId
         }
-        fetch('http://192.168.0.2:8080', {
+        fetch('http://192.168.0.2:8080/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
