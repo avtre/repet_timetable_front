@@ -21,6 +21,10 @@ const UserForm = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
+        }).then(r => {
+            tg.MainButton.setParams({
+                text: r
+            })
         })
     }, [name, surname, classNumber])
 
